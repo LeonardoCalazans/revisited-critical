@@ -7,20 +7,29 @@ body {
 .section-transition {
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
+
+/* Estado oculto - inicia invisível e fora do fluxo (mas ainda presente para transição) */
 .section-hidden {
     opacity: 0;
     transform: translateY(10px);
     pointer-events: none; /* Impede cliques em elementos ocultos */
-    position: absolute; /* Para que os elementos ocultos não ocupem espaço */
-    width: 100%;
-    height: 100%;
+    position: absolute; /* Tira do fluxo normal para não ocupar espaço durante a transição */
+    width: 100%; /* Garante que a largura permaneça, evitando layout shifts */
     top: 0;
     left: 0;
     z-index: -1; /* Garante que os elementos visíveis fiquem por cima */
 }
+
+/* Estado visível - no fluxo normal e totalmente visível */
 .section-visible {
     opacity: 1;
     transform: translateY(0);
-    position: relative;
+    pointer-events: auto; /* Permite interações quando visível */
+    position: relative; /* Volta para o fluxo normal */
     z-index: 0;
+}
+
+/* Classe adicional para ocultar completamente após a transição */
+.section-display-none {
+    display: none;
 }

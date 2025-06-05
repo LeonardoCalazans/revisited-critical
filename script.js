@@ -34,18 +34,17 @@ const failureResultDisplay = document.getElementById('failureResultDisplay');
 // Função para encontrar a descrição correta com base no valor
 function getDescription(type, value, descriptions) {
     let targetMap = descriptions;
+    // Verifica se `type` é uma chave válida para um mapa aninhado dentro de `descriptions`
     if (type && descriptions.hasOwnProperty(type) && typeof descriptions[type] === 'object' && descriptions[type] !== null) {
         targetMap = descriptions[type];
-    } else if (type && !descriptions.hasOwnProperty(type) && (Object.keys(descriptions).length === 0 || !Object.values(descriptions).some(val => typeof val === 'object' && !Array.isArray(val) && val !== null))) {
-        // Esta condição tenta identificar quando o 'type' foi fornecido, mas não corresponde a uma chave existente,
-        // E o objeto 'descriptions' não parece ser um objeto aninhado (ou seja, é um mapa direto, como 'failureDescriptions').
-        // Neste caso, 'targetMap' já é 'descriptions', então não precisamos fazer nada,
-        // mas evitamos a mensagem de erro "Tipo 'default' não encontrado".
-    } else if (type && !descriptions.hasOwnProperty(type)) {
-        // Se 'type' foi fornecido, não é uma propriedade direta, e 'descriptions' parece ser aninhado,
-        // então é um erro de 'tipo não encontrado'.
+    } else if (type && !descriptions.hasOwnProperty(type) && Object.keys(descriptions).length > 0 && typeof Object.values(descriptions)[0] === 'object' && Object.values(descriptions)[0] !== null && !Array.isArray(Object.values(descriptions)[0])) {
+        // Se 'type' foi fornecido, mas não é uma propriedade direta, e 'descriptions' é um objeto de objetos (aninhado),
+        // então é um erro de 'tipo não encontrado' para essa estrutura.
         return `Tipo "${type}" não encontrado.`;
     }
+    // Se 'type' é null ou vazio, ou 'descriptions' não é aninhado (como failureDescriptions),
+    // então `targetMap` já é `descriptions` e prossegue para a busca direta.
+
 
     if (targetMap.hasOwnProperty(value)) {
         return targetMap[value];
@@ -66,10 +65,18 @@ function getDescription(type, value, descriptions) {
 function showSection(sectionToShowId) {
     const sections = [damageCalculatorSection, insanitySection, failureSection];
     const menuButtons = [menuDamage, menuInsanity, menuFailures];
+    const transitionDuration = 300; // Duração da transição em ms (deve corresponder ao CSS)
 
     sections.forEach(section => {
-        section.classList.remove('section-visible');
-        section.classList.add('section-hidden');
+        if (section.id !== sectionToShowId) {
+            // Esconde a seção, permite a transição visual
+            section.classList.remove('section-visible');
+            section.classList.add('section-hidden');
+            // Após a transição, remove totalmente do fluxo
+            setTimeout(() => {
+                section.classList.add('section-display-none');
+            }, transitionDuration);
+        }
     });
 
     menuButtons.forEach(button => {
@@ -91,22 +98,21 @@ function showSection(sectionToShowId) {
     targetButton.classList.remove('bg-gray-300', 'hover:bg-gray-400', 'text-gray-800');
     targetButton.classList.add('bg-blue-500', 'hover:bg-blue-600', 'text-white');
 
-    setTimeout(() => {
-        targetSection.classList.remove('section-hidden');
-        targetSection.classList.add('section-visible');
-        // Ocultar divs de resultado de outras seções
-        if (sectionToShowId !== 'damageCalculatorSection') {
-            lesionTableDisplay.classList.remove('opacity-100', 'scale-100');
-            lesionTableDisplay.classList.add('opacity-0', 'scale-95', 'hidden');
-            lesionResultDisplay.classList.add('hidden');
-        }
-        if (sectionToShowId !== 'insanitySection') {
-            insanityResultDisplay.classList.add('hidden');
-        }
-        if (sectionToShowId !== 'failureSection') {
-            failureResultDisplay.classList.add('hidden');
-        }
-    }, 10);
+    // Remove display: none antes de aplicar as classes de transição para que a animação ocorra
+    targetSection.classList.remove('section-display-none');
+    // Força o reflow para garantir que o navegador veja a mudança de display antes de aplicar a transição
+    void targetSection.offsetWidth;
+    
+    // Mostra a seção, permitindo a transição visual
+    targetSection.classList.remove('section-hidden');
+    targetSection.classList.add('section-visible');
+
+    // Ocultar divs de resultado de outras seções (sempre que a seção muda)
+    lesionTableDisplay.classList.remove('opacity-100', 'scale-100');
+    lesionTableDisplay.classList.add('opacity-0', 'scale-95', 'hidden');
+    lesionResultDisplay.classList.add('hidden');
+    insanityResultDisplay.classList.add('hidden');
+    failureResultDisplay.classList.add('hidden');
 }
 
 // Event listeners para o menu
@@ -212,7 +218,9 @@ displayFailureBtn.addEventListener('click', () => {
         return;
     }
 
-    const description = getDescription(null, failureValue, failureDescriptions); // Passamos null para o tipo, pois failureDescriptions é um mapa direto
+    // Para falhas críticas, 'failureDescriptions' é um mapa direto, não aninhado por tipo.
+    // Passamos 'null' como o tipo, o que fará com que getDescription use o 'failureDescriptions' diretamente.
+    const description = getDescription(null, failureValue, failureDescriptions);
     failureResultDisplay.innerHTML = description;
     failureResultDisplay.classList.remove('hidden', 'bg-red-50', 'border-red-200', 'text-red-800');
     failureResultDisplay.classList.add('bg-red-50', 'border-red-200', 'text-red-800'); // Cor padrão para falhas
