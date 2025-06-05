@@ -1,0 +1,26 @@
+/* Configura a fonte Inter para todo o documento */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f3f4f6; /* Cor de fundo suave */
+}
+/* Estilos para as transições das seções */
+.section-transition {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.section-hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none; /* Impede cliques em elementos ocultos */
+    position: absolute; /* Para que os elementos ocultos não ocupem espaço */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Garante que os elementos visíveis fiquem por cima */
+}
+.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    z-index: 0;
+}
