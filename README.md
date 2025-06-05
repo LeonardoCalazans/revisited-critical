@@ -14,3 +14,26 @@ Um guia essencial para jogadores e mestres de RPG que buscam um entendimento apr
 
 📜 *Contribuições são bem-vindas!* Sinta-se à vontade para enviar sugestões, feedback ou aprimoramentos.
 
+---
+
+## ⚠️ Informações Importantes
+
+Este material foi feito de **fã para fãs**, sua **venda e/ou impressão é estritamente PROIBIDA**.  
+Todos os direitos autorais são reservados aos respectivos autores e à **Wizards of the Coast**.
+
+📝 **Traduzido e Diagramado por:**  
+[D&D Traduções](https://www.facebook.com/dndtraducoes) & [Uncensored RPG](https://www.facebook.com/UncensoredRPG)
+
+📖 **Acertos Críticos Revisitados por:**  
+Benjamin Huffman - [Sterling Vermin](http://sterlingvermin.com)
+
+🌐 **Site criado por:**  
+[Leonardo Calazans](https://github.com/LeonardoCalazans)
+
+## 🛒 Apoie o RPG!
+**Venda de miniaturas de RPG e outras figuras**  
+[![Instagram](https://img.shields.io/badge/Instagram-JL_Impressões3D-blue?logo=instagram)](https://www.instagram.com/jl.impressoes3d/)
+
+---
+
+Se quiser algum ajuste ou mais personalizações, me avise! 😊
