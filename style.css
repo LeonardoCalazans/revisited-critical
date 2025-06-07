@@ -190,6 +190,7 @@ body {
 /* Layout de duas colunas para telas maiores */
 @media (min-width: 1200px) {
     #fullTablesContent {
+        display: grid; /* Define grid layout */
         grid-template-columns: repeat(2, 1fr); /* Duas colunas de largura igual */
     }
 }
