@@ -3,6 +3,19 @@ body {
     font-family: "Inter", sans-serif;
     background-color: #f3f4f6; /* Cor de fundo suave */
 }
+
+/* Base styles for main page sections (used by index.html and tables.html) */
+.main-content-wrapper {
+    max-width: 48rem; /* Equivalent to max-w-md but more explicit */
+    width: 100%;
+    margin: 0 auto; /* Center content */
+    background-color: #ffffff; /* bg-white */
+    padding: 2rem; /* p-8 */
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    border: 1px solid #e5e7eb; /* border border-gray-200 */
+}
+
 /* Estilos para as transições das seções */
 .section-transition {
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -32,4 +45,202 @@ body {
 /* Classe adicional para ocultar completamente após a transição */
 .section-display-none {
     display: none;
+}
+
+/* Styles for inner elements that should still animate, like result displays */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+.opacity-0 {
+    opacity: 0;
+}
+.opacity-100 {
+    opacity: 1;
+}
+.scale-95 {
+    transform: scale(0.95);
+}
+.scale-100 {
+    transform: scale(1);
+}
+
+/* --- Hamburger Menu Styles --- */
+.hamburger-menu {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 50; /* Above everything else */
+}
+
+.menu-toggle {
+    display: none; /* Hide the actual checkbox */
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    padding: 0.5rem;
+    background-color: #3b82f6; /* bg-blue-500 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation for the hamburger icon */
+.menu-toggle:checked + .hamburger-icon span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.menu-toggle:checked + .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle:checked + .hamburger-icon span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* Width of the side menu */
+    height: 100%;
+    background-color: #1e3a8a; /* A darker blue for the menu background */
+    transform: translateX(-100%); /* Start off-screen */
+    transition: transform 0.3s ease-in-out;
+    padding-top: 5rem; /* Space for the hamburger icon */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    z-index: 40; /* Below the hamburger icon but above content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0; /* Remove default padding for ul */
+}
+
+.menu-toggle:checked ~ .mobile-menu {
+    transform: translateX(0); /* Slide into view */
+}
+
+.mobile-menu a {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-menu a:hover {
+    background-color: #2563eb; /* A slightly lighter blue on hover */
+}
+
+/* Styles for full tables content */
+.table-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    border: 1px solid #e5e7eb; /* border border-gray-200 */
+}
+
+.table-section h3 {
+    font-size: 1.5rem; /* text-xl */
+    font-weight: bold; /* font-bold */
+    color: #1f2937; /* text-gray-900 */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.table-section ul {
+    list-style: none; /* Remove default list style */
+    padding: 0;
+}
+
+.table-section li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.table-section li:last-child {
+    border-bottom: none;
+}
+
+.table-section strong {
+    color: #4f46e5; /* A strong color for emphasis */
+}
+
+
+#irtopo {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  text-indent: -9999px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  z-index: 10;
+  position: fixed;
+  display: none;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  text-indent: -9999px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  z-index: 10;
+}
+#irtopo span {
+  content: "▲";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -12px;
+  height: 0;
+  width: 0;
+  border: 8px solid transparent;
+  border-bottom-color: #3b82f6;
+}
+#irtopo:hover {
+  transition: 0.2s;
+  background-color: #3b82f6;
+  color: #000;
+}
+#irtopo:hover span {
+  border-bottom-color: #000;
+}
+
+@keyframes animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
