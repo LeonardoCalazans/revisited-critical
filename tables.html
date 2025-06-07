@@ -18,9 +18,21 @@
     </a>
     <!-- irtopo -->
 
-    <div class="main-content-wrapper">
-        <h1 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">Tabelas Completas para Consulta</h1>
+    <header
+        class="w-full max-w-3xl flex items-center justify-between p-4 bg-white rounded-2xl shadow-lg border border-gray-200 mb-6">
+        <div class="flex items-center space-x-4">
+            <img src="Assets/d20_close.jpg" alt="Ícone Dado de Vinte Lados" class="w-10 h-10 rounded-full" />
+            <h1 class="text-2xl font-extrabold text-gray-900 hidden md:block">Tabelas Completas para Consulta</h1>
+            <!-- Oculta em telas pequenas, mostra em md e acima -->
+        </div>
 
+        <!-- Navegação para telas maiores (visível em telas >= 1200px) -->
+        <nav class="xl:flex space-x-6 text-gray-700 text-lg font-medium">
+            <a href="index.html" class="hover:text-blue-600 transition-colors duration-200">Críticos Revisados</a>
+        </nav>
+    </header>
+
+    <div class="main-content-wrapper">
         <div id="fullTablesContent">
             <!-- Conteúdo das tabelas será renderizado aqui pelo JavaScript -->
         </div>

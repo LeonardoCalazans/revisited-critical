@@ -68,12 +68,12 @@ body {
 .hamburger-menu {
     position: fixed;
     top: 1rem;
-    left: 1rem;
-    z-index: 50; /* Above everything else */
+    right: 1rem; /* Alterado para o canto superior direito */
+    z-index: 50; /* Acima de tudo */
 }
 
 .menu-toggle {
-    display: none; /* Hide the actual checkbox */
+    display: none; /* Oculta o checkbox real */
 }
 
 .hamburger-icon {
@@ -99,7 +99,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-/* Animation for the hamburger icon */
+/* Animação para o ícone do hambúrguer */
 .menu-toggle:checked + .hamburger-icon span:nth-child(1) {
     transform: translateY(11px) rotate(45deg);
 }
@@ -115,23 +115,23 @@ body {
 .mobile-menu {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 250px; /* Width of the side menu */
+    right: 0; /* Alterado para a direita */
+    width: 250px; /* Largura do menu lateral */
     height: 100%;
-    background-color: #1e3a8a; /* A darker blue for the menu background */
-    transform: translateX(-100%); /* Start off-screen */
+    background-color: #1e3a8a; /* Um azul mais escuro para o fundo do menu */
+    transform: translateX(100%); /* Começa fora da tela (direita) */
     transition: transform 0.3s ease-in-out;
-    padding-top: 5rem; /* Space for the hamburger icon */
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-    z-index: 40; /* Below the hamburger icon but above content */
+    padding-top: 5rem; /* Espaço para o ícone do hambúrguer */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5); /* Sombra à esquerda */
+    z-index: 40; /* Abaixo do ícone do hambúrguer, mas acima do conteúdo */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 0; /* Remove default padding for ul */
+    padding-left: 0; /* Remove padding padrão para ul */
 }
 
 .menu-toggle:checked ~ .mobile-menu {
-    transform: translateX(0); /* Slide into view */
+    transform: translateX(0); /* Desliza para a visualização */
 }
 
 .mobile-menu a {
@@ -148,7 +148,7 @@ body {
 }
 
 .mobile-menu a:hover {
-    background-color: #2563eb; /* A slightly lighter blue on hover */
+    background-color: #2563eb; /* Um azul ligeiramente mais claro ao passar o mouse */
 }
 
 /* Styles for full tables content */
@@ -185,6 +185,13 @@ body {
 
 .table-section strong {
     color: #4f46e5; /* A strong color for emphasis */
+}
+
+/* Layout de duas colunas para telas maiores */
+@media (min-width: 1200px) {
+    #fullTablesContent {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas de largura igual */
+    }
 }
 
 
