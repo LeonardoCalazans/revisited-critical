@@ -69,7 +69,7 @@ function renderFullTables() {
         // --- Tabela de Acertos Críticos por Tipo de Dano ---
         console.log('renderFullTables: Renderizando tabelas de Acertos Críticos por Tipo de Dano...');
         htmlContent += `
-            <div class="table-section mt-6 col-span-full">
+            <div class="table-section col-span-full">
                 <h2 class="text-2xl font-extrabold text-gray-900 mb-4 text-center">Tabelas de Acertos Críticos por Tipo de Dano</h2>
                 <p class="text-gray-700 mb-4">Abaixo estão as tabelas completas para cada tipo de dano, detalhando os efeitos de um acerto crítico de 1 a 20. Você também pode usar a <a href='index.html' class='text-blue-600 hover:underline'>Calculadora</a> para obter descrições específicas.</p>
             </div>

@@ -5,32 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acertos Críticos Revisados</title>
-    <!-- Inclui Tailwind CSS via CDN -->
+    <meta name="description"
+        content="Calculadora de Acertos Críticos Revisados para RPGs, com tabelas de dano, insanidades e falhas críticas.">
+    <meta name="keywords"
+        content="RPG, D&D, Acertos Críticos, Tabelas de Dano, Insanidades, Falhas Críticas, Calculadora de RPG">
+    <meta name="author" content="Leonardo Calazans">
+    <link rel="shortcut icon" href="Assets/d20_close.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inclui o arquivo de estilos modularizado -->
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body class="flex flex-col items-center justify-center p-6">
-    <!-- Novo Header com logo, título e menu responsivo -->
+<body class="flex flex-col items-center justify-center p-2">
     <header
-        class="w-5/6 max-w-3xl flex items-center justify-between p-4 bg-white rounded-2xl shadow-lg border border-gray-200 mb-6">
+        class="w-5/6 max-w-3xl flex items-center justify-between p-4 bg-white rounded-2xl shadow-lg border border-gray-200 mb-6 mt-4 div-width">
         <div class="flex items-center space-x-4">
             <img src="Assets/d20_close.jpg" alt="Ícone Dado de Vinte Lados" class="w-10 h-10 rounded-full" />
             <h1 class="text-2xl font-extrabold text-gray-900 hidden md:block">Críticos Revisados</h1>
-            <!-- Oculta em telas pequenas, mostra em md e acima -->
         </div>
 
-        <!-- Navegação para telas maiores (visível em telas >= 1200px) -->
         <nav class="xl:flex space-x-6 text-gray-700 text-lg font-medium">
             <a href="tables.html" class="hover:text-blue-600 transition-colors duration-200">Tabelas Completas</a>
         </nav>
 
     </header>
 
-    <div class="w-5/6 max-w-3xl bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
-        <!-- Menu de Navegação da Calculadora (mantido para alternar entre as seções da calculadora) -->
-        <nav class="mb-6 flex justify-center space-x-4">
+    <div class="w-5/6 max-w-3xl bg-white rounded-2xl shadow-lg p-4 border border-gray-200 div-width">
+        <nav class="mb-6 flex justify-around">
             <button id="menuDamage"
                 class="menu-button bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-200 ease-in-out">
                 Acertos Críticos
@@ -45,10 +45,8 @@
             </button>
         </nav>
 
-        <!-- Seção de Calculadora de Dano -->
         <div id="damageCalculatorSection" class="section-transition section-visible relative w-full">
             <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Acertos Críticos</h2>
-            <!-- Seletor de Tipo de Dano -->
             <div class="mb-5 ">
                 <label for="damageType" class="block text-sm font-medium text-gray-700 mb-2">Selecione o Tipo de
                     Dano:</label>
@@ -70,7 +68,6 @@
                 </select>
             </div>
 
-            <!-- Entrada de Número de Dano -->
             <div class="mb-6">
                 <label for="damageValue" class="block text-sm font-medium text-gray-700 mb-2">Insira o Valor do Dano
                     (1-20):</label>
@@ -78,19 +75,15 @@
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition duration-150 ease-in-out">
             </div>
 
-            <!-- Botão para Exibir Mensagem de Dano -->
             <button id="displayMessageBtn"
                 class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
                 Exibir Mensagem
             </button>
 
-            <!-- Área para Exibir a Mensagem Principal de Dano -->
             <div id="messageDisplay"
                 class="mt-8 p-4 bg-blue-50 border border-blue-200 text-blue-800 rounded-lg text-center text-lg font-medium shadow-inner hidden">
-                <!-- A mensagem será exibida aqui -->
             </div>
 
-            <!-- Div para Tabela de Lesões (inicialmente oculta) -->
             <div id="lesionTableDisplay"
                 class="mt-4 p-4 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg shadow-inner hidden opacity-0 transition-all duration-300 transform scale-95">
                 <p class="text-sm font-medium mb-3">Escolha a Tabela de Lesões:</p>
@@ -117,7 +110,6 @@
             </div>
         </div>
 
-        <!-- Seção de Insanidades (oculta por padrão) -->
         <div id="insanitySection" class="section-transition section-hidden relative">
             <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Tabela de Insanidade</h2>
             <div class="mb-6">
@@ -132,11 +124,9 @@
             </button>
             <div id="insanityResultDisplay"
                 class="mt-8 p-4 bg-purple-50 border border-purple-200 text-purple-800 rounded-lg text-center text-lg font-medium shadow-inner hidden">
-                <!-- A mensagem de insanidade será exibida aqui -->
             </div>
         </div>
 
-        <!-- Seção de Falhas Críticas (oculta por padrão) -->
         <div id="failureSection" class="section-transition section-hidden relative">
             <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Tabela de Falhas Críticas Revisadas</h2>
             <div class="mb-6">
@@ -151,7 +141,6 @@
             </button>
             <div id="failureResultDisplay"
                 class="mt-8 p-4 bg-red-50 border border-red-200 text-red-800 rounded-lg text-center text-lg font-medium shadow-inner hidden">
-                <!-- A mensagem de falha crítica será exibida aqui -->
             </div>
         </div>
     </div>
