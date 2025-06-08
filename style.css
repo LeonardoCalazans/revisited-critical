@@ -187,13 +187,6 @@ body {
     color: #4f46e5; /* A strong color for emphasis */
 }
 
-/* Layout de duas colunas para telas maiores */
-@media (max-width: 800px) {
-   .div-width {
-    width: 100%;
-   }
-}
-
 #irtopo {
   position: fixed;
   right: 10px;
